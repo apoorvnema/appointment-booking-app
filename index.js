@@ -1,16 +1,11 @@
-const ul = document.querySelector("ul");
 function handleFormSubmit(event) {
     event.preventDefault();
-    axios.get("https://crudcrud.com/api/c9af40cbb821453ab02d1fd2a5492066/appointmentData").then(res => {
-        for (let i = 0; i < res.data.length; i++) {
-            printUsers(res.data[i])
-        }
+    axios.delete("https://crudcrud.com/api/c9af40cbb821453ab02d1fd2a5492066/appointmentData/66098eeb1492af03e8f10fa5").then(res => {
+        deleteUsers(res.data)
     }).catch(err => console.log(err));
 }
-function printUsers(user) {
-    const li = document.createElement("li");
-    li.textContent = user.username + "-" + user.email + "-" + user.phone;
-    ul.appendChild(li);
+function deleteUsers(user) {
+    document.getElementById(user._id).remove();
 }
 
 // Do not touch the code below
